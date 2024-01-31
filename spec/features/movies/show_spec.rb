@@ -21,7 +21,7 @@ RSpec.describe 'Movie Details Page', type: :feature do
     it 'should have movie title, vote avg, runtime in hours/mins, genre, summary, 
       first 10 cast members and their characters, count of total reviews and each review and its author', :vcr do
       visit "/users/#{@user1.id}/movies/238"
-      save_and_open_page
+  
       expect(page).to have_content("Movie Title: The Godfather")
       expect(page).to have_content("Average Rating: 8.707")
       expect(page).to have_content("Runtime: 2h 55m")
