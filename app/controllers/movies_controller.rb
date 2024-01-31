@@ -33,7 +33,13 @@ class MoviesController < ApplicationController
     # require 'pry'; binding.pry
     @movie_cast = json2
 
-    
+    conn3 = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
+      faraday.params["api_key"] = Rails.application.credentials.tmdb[:key]
+    end
+    response3 = conn3.get("/3/movie/#{params[:movie_id]}/reviews")
+    json3 = JSON.parse(response3.body, symbolize_names: true)
+    # require 'pry'; binding.pry
+    @movie_reviews = json3
   end
 
 end

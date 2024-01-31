@@ -1,6 +1,6 @@
-
 <%= button_to 'Back to Discover Page', user_discover_index_path(@user), method: :get, data: { turbo: false }, local: true %><br>
 <br/><%= button_to "Create a Viewing Party", "/users/#{@user.id}/movies/#{@movie[:id]}/viewing_party/new" %>
+
 
 <h1><b>Movie Title: </b><%= @movie[:title] %></h1>
 <p><b>Average Rating: </b><%= @movie[:vote_average] %></p>
@@ -14,9 +14,17 @@
 </p>
 <p><b>Summary: </b><%= @movie[:overview]  %></p>
 
+
+
 <h2><b> Cast: </b></h2>
 
 <p><% @movie_cast[:cast].first(10).each do |c| %>
 
-  <li><b><%= c[:character] %></b> played by <%= c[:name] %></li>
+  <li><b><%= c[:character] %></b> played by <em><%= c[:name] %></em></li>
+<% end %>
+
+<h2><b> Total Reviews: </b><%= @movie_reviews[:total_results] %></h2>
+<% @movie_reviews[:results].each do |r| %>
+  <b>Author: </b><%= r[:author] %><br/>
+  <b>Review: </b><%= r[:content] %><br/><br/>
 <% end %>
