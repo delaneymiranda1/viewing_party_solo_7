@@ -1,1 +1,9 @@
+<%= button_to 'Back to Discover Page', user_discover_index_path(@user), method: :get, data: { turbo: false }, local: true %><br>
+<br/><br/>
+
 <h1> Movies Index </h1>
+
+<% @movies.each do |movie|%>
+  <p> Movie Title: <%= link_to "#{movie[:title]}", user_movie_path(@user, movie) %><br/>
+  <p> Average Rating: <%= "#{movie[:vote_average]}" %><br/><br/>
+<% end %>
