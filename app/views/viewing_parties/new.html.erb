@@ -1,9 +1,9 @@
-<h1><%= "#{@movie[:title]} Viewing Party" %></h1>
+<h1><%= "#{@new_movie[:title]} Viewing Party" %></h1>
 
 <section>
-  <%= form_with url: "/users/#{@host.id}/movies/#{@movie[:id]}/viewing_parties", method: :post, data: {turbo: false}, local: true do |f| %>
+  <%= form_with url: "/users/#{@host.id}/movies/#{@new_movie[:id]}/viewing_parties", method: :post, data: {turbo: false}, local: true do |f| %>
     <p><%= f.label :duration %>
-    <%= f.number_field :duration, value: @movie[:runtime] %> minutes</p>
+    <%= f.number_field :duration, value: @new_movie[:runtime] %> minutes</p>
 
     <p><%= f.label :date %>
     <%= f.date_field :date, value: Date.today %></p>

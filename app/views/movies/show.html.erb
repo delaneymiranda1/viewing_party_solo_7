@@ -1,24 +1,24 @@
 <%= button_to 'Back to Discover Page', user_discover_index_path(@user), method: :get, data: { turbo: false }, local: true %><br>
-<br/><%= button_to "Create a Viewing Party", "/users/#{@user.id}/movies/#{@movie[:id]}/viewing_party/new" %>
+<%= button_to 'Create a Viewing Party', "/users/#{@user.id}/movies/#{@movie.id}/viewing_parties/new", method: :get, data: { turbo: false }, local: true %>
 
 
-<h1><b>Movie Title: </b><%= @movie[:title] %></h1>
-<p><b>Average Rating: </b><%= @movie[:vote_average] %></p>
-<% runtime_in_minutes = @movie[:runtime] %>
+<h1><b>Movie Title: </b><%= @movie.title %></h1>
+<p><b>Average Rating: </b><%= @movie.vote_avg %></p>
+<% runtime_in_minutes = @movie.runtime %>
 <% hours = runtime_in_minutes / 60 %>
 <% minutes = runtime_in_minutes % 60 %>
 <p><b>Runtime:</b> <%= "#{hours}h #{minutes}m" %></p>
 <p><b>Genre:</b> 
-  <% genre_names = @movie[:genres].map { |g| g[:name] }.join(", ") %>
+  <% genre_names = @movie.genre.map { |g| g[:name] }.join(", ") %>
   <%= genre_names %>
 </p>
-<p><b>Summary: </b><%= @movie[:overview]  %></p>
+<p><b>Summary: </b><%= @movie.summary  %></p>
 
 
 
 <h2><b> Cast: </b></h2>
 
-<p><% @movie_cast[:cast].first(10).each do |c| %>
+<p><% @movie_cast.first(10).each do |c| %>
 
   <li><b><%= c[:character] %></b> played by <em><%= c[:name] %></em></li>
 <% end %>

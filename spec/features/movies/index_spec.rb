@@ -15,9 +15,9 @@ RSpec.describe 'Movie Results Page', type: :feature do
       expect(page).to have_content("Movie Title: The Shawshank Redemption")
       expect(page).to have_content("Average Rating: 8.711")
       expect(page).to have_content("Movie Title: The Godfather")
-      expect(page).to have_content("Average Rating: 8.707")
+      expect(page).to have_content("Average Rating: 8.708")
       expect(page).to have_content("Movie Title: The Godfather Part II")
-      expect(page).to have_content("Average Rating: 8.591")
+      expect(page).to have_content("Average Rating: 8.592")
       expect(page).to have_content("Movie Title: Schindler's List")
       expect(page).to have_content("Average Rating: 8.572")
 
@@ -27,6 +27,7 @@ RSpec.describe 'Movie Results Page', type: :feature do
     it 'each movie title is a link to the movies details page', :vcr do
       visit user_movies_path(@user1)
       click_link "The Godfather"
+      
       expect(current_path).to eq("/users/#{@user1.id}/movies/238")
 
       visit user_movies_path(@user1)

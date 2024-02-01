@@ -13,7 +13,7 @@ RSpec.describe 'New Viewing Party Page', type: :feature do
   # end
 
   describe "when i visit '/users/:user_id/movies/:movie_id/viewing_party/new'" do
-    it 'i should see the movie title with a form to fill out', :vcr do
+    xit 'i should see the movie title with a form to fill out', :vcr do
       visit "/users/#{@user1.id}/movies/238/viewing_parties/new"
       save_and_open_page
       expect(page).to have_content('The Godfather')

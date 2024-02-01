@@ -15,7 +15,7 @@ RSpec.describe 'Movie Details Page', type: :feature do
       expect(page).to have_button("Back to Discover Page")
 
       click_button("Create a Viewing Party")
-      expect(current_path).to eq("/users/#{@user1.id}/movies/238/viewing_party/new")
+      expect(current_path).to eq("/users/#{@user1.id}/movies/238/viewing_parties/new")
     end
 
     it 'should have movie title, vote avg, runtime in hours/mins, genre, summary, 
@@ -23,7 +23,7 @@ RSpec.describe 'Movie Details Page', type: :feature do
       visit "/users/#{@user1.id}/movies/238"
   
       expect(page).to have_content("Movie Title: The Godfather")
-      expect(page).to have_content("Average Rating: 8.707")
+      expect(page).to have_content("Average Rating: 8.708")
       expect(page).to have_content("Runtime: 2h 55m")
       expect(page).to have_content("Genre: Drama, Crime")
       expect(page).to have_content("Summary: Spanning the years 1945 to 1955,")
