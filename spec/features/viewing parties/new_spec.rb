@@ -22,12 +22,28 @@ RSpec.describe 'New Viewing Party Page', type: :feature do
       fill_in :date, with: (Date.today + 1)
       fill_in :start_time, with: '6:00'
 
-      # expect(page).to have_unchecked_field "#{@user2.name}"
-      # expect(page).to have_unchecked_field "#{@user3.name}"
-      # check_field "#{@user3.name}"
+      expect(page).to have_unchecked_field "#{@user2.name}"
+      expect(page).to have_unchecked_field "#{@user3.name}"
+      check "#{@user3.name}"
       expect(page).to have_button('Create')
       click_button 'Create'
       expect(current_path).to eq(user_path(@user1))
+      expect(page).to have_content('Duration: 180')
+
+    end
+
+    xit 'error if you enter duration shorter than runtime', :vcr do
+      visit "/users/#{@user1.id}/movies/238/viewing_parties/new"
+      expect(page).to have_content('The Godfather')
+
+      fill_in :duration, with: 150
+      fill_in :date, with: (Date.today + 1)
+      fill_in :start_time, with: '6:00'
+
+      click_button 'Create'
+      expect(current_path).to eq("/users/#{@user1.id}/movies/238/viewing_parties/new")
+      expect(page).to have_content('invalid duration')
+      
     end
   end
 end
